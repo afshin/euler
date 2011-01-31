@@ -52,7 +52,7 @@ exports.permutations = (function(){
 
 exports.run = function(fn){
     var time_start = Date.now();
-    var result = fn();
+    var result = fn.apply(exports, null);
     var time_end = Date.now();
     print(result + '\nIt took ' + (time_end - time_start) + ' ms\n');
 };

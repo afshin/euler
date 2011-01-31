@@ -1,6 +1,5 @@
-var euler = require('./common/euler');
-var main = function(){
-    var starting_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+require('./common/euler').run(function(){
+    var euler = this, starting_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     /* use with a SORTED array */
     var permutations = function(arr){
         var len = arr.length;
@@ -19,11 +18,7 @@ var main = function(){
         var a = +multipliers[0]; b = +multipliers[1], c = +product;
         if (c === a * b) matches[name] = c;
     };
-    euler.debug('creating pandigitals');
-    var pandigitals = permutations(starting_array);
-    euler.debug('pandigitals created, length: ' + pandigitals.length);
-    euler.debug('checking each for potential matches');
-    pandigitals.map(function(num){
+    permutations(starting_array).map(function(num){
         var str = num + '';
         var a, b, c, name, i, j;
         c = str.slice(5, 9);
@@ -33,7 +28,6 @@ var main = function(){
             test([a, b].sort(), c);
         };
     });
-    euler.debug('done checking.');
     var sum = 0, products = {}, temp;
     for (var match in matches){
         temp = matches[match];
@@ -43,5 +37,4 @@ var main = function(){
         };
     };
     return 'answer is: ' + sum;
-};
-euler.run(main);
+});

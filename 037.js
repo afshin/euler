@@ -1,16 +1,13 @@
-var euler = require('./common/euler');
-var main = function(){
-    var is_prime = euler.is_prime;
+require('./common/euler').run(function(){
+    var euler = this, is_prime = euler.is_prime;
     var is_truncatable_prime = (function(){
         var memo = {}, bad_nums = {0: null, 4: null, 6: null, 8: null};
         var check_iter = function(acc, val){return acc && is_prime(val);},
             forward_split_iter = function(acc, val){
-                if (acc === null || val in bad_nums) return null;
-                return acc.concat(+((acc[acc.length - 1] || '') + val));
+                return (acc === null || val in bad_nums) ? null : acc.concat(+((acc[acc.length - 1] || '') + val));
             },
             backward_split_iter = function(acc, val){
-                if (acc === null || val in bad_nums) return null;
-                return acc.concat(+(val + (acc[acc.length - 1] || '')));
+                return (acc === null || val in bad_nums) ? null : acc.concat(+(val + (acc[acc.length - 1] || '')));
             };
         return function(num){
             if (num in memo) return memo[num];
@@ -22,13 +19,7 @@ var main = function(){
         };
     })();
     var found = 0, candidate = 11, result = [];
-    while (found < 11){
-        candidate += 2;
-        if (is_prime(candidate) && is_truncatable_prime(candidate)){
-            result.push(candidate);
-            found += 1;
-        };
-    };
+    while (found < 11)
+        if (is_prime(candidate += 2) && is_truncatable_prime(candidate)) found = result.push(candidate);
     return 'answer is: ' + result.reduce(function(acc, val){return acc + val;});
-};
-euler.run(main);
+});
