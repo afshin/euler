@@ -1,4 +1,4 @@
-require('./common/euler').run(function(){
+require('./common/euler').run(function () {
     var euler = this, count = 0, a, b, c, d, e, f, g; 
     for (a = 200 ; a >= 0 ; a -= 200) 
         for (b = a ; b >= 0 ; b -= 100) 

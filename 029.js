@@ -1,5 +1,5 @@
 // run this script in rhino because node.js's Math.pow implementation gets imprecise faster than rhino's
-(function(){
+(function () {
     var terms = {}, name, count = 0;
     for (var i = 2; i < 101; i += 1){
         for (var j = 2; j < 101; j += 1){
