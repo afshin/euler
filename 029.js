@@ -1,12 +1,13 @@
-var terms = {};
-var lcv_1 = 2, lcv_2 = 2;
-for (lcv_1 = 2; lcv_1 < 101; lcv_1 += 1){
-    for (lcv_2 = 2; lcv_2 < 101; lcv_2 += 1){
-        terms[Math.pow(lcv_1, lcv_2)] = null;
+// run this script in rhino because node.js's Math.pow implementation gets imprecise faster than rhino's
+(function(){
+    var terms = {}, name, count = 0;
+    for (var i = 2; i < 101; i += 1){
+        for (var j = 2; j < 101; j += 1){
+            name = Math.pow(i, j);
+            if (name in terms) continue;
+            terms[Math.pow(i, j)] = null;
+            count += 1;
+        };
     };
-};
-var count = 0;
-for (var x in terms){
-    count += 1;
-};
-java.lang.System.out.println('total is: ' + count);
+    java.lang.System.out.println('total is: ' + count);
+})();
