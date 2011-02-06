@@ -1,18 +1,12 @@
 require('./common/euler').run(function () {
     var euler = this,
-        d = function (x) {
-            var divisors = euler.divisors(x).sort(function (x, y) {return x - y;});
-            divisors.pop();
-            return divisors.sum();
-        },
-        are_amicable = function (x, y) {return (d(x) === y) && (d(y) === x);},
-        lcv = 2, current = d(lcv), amicable_sum = 0, memo = {};
+        d = function (x) {return euler.proper_divisors(x).sum();},
+        amicable = function (x, y) {return (d(x) === y) && (d(y) === x);},
+        lcv = 2, curr = d(lcv), sum = 0, memo = {};
     while (lcv < 10000){
-        if (lcv !== current && !(current in memo) && !(lcv in memo) && are_amicable(lcv, current)){
-            amicable_sum += lcv + current;
-            memo[current] = memo[lcv] = true;
-        };
-        current = d(++lcv);
+        if (lcv !== curr && !(curr in memo) && !(lcv in memo) && amicable(lcv, curr) && (memo[curr] = memo[lcv] = true))
+            sum += lcv + curr;
+        curr = d(++lcv);
     };
-    return amicable_sum;
+    return sum;
 });
