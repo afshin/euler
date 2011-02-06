@@ -1,6 +1,3 @@
-def factorial(num):
-    if (num == 1):
-        return 1
-    return num * factorial(num - 1)
+from math import factorial
 
 print(factorial(100));

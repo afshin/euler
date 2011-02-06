@@ -25,7 +25,7 @@ exports.debug = function (x) {
 };
 
 exports.divisors = function (num) {
-    var divisors = [1], limit = Math.sqrt(num) + 1, lcv;
+    var divisors = [1, num], limit = Math.sqrt(num) + 1, lcv;
     for (lcv = 2; lcv < limit; lcv += 1) if (0 === num % lcv) divisors.push(lcv, num / lcv);
     return divisors;
 };
@@ -56,10 +56,18 @@ exports.permutations = (function () {
     return permutations;
 })();
 
+exports.range = function (start, end) {
+    var result = [], lcv;
+    if (start > end) throw new RangeError('start cannot be larger than end');
+    for (lcv = start; lcv < end + 1; lcv += 1) result.push(lcv);
+    return result;
+};
+
 exports.run = function (fn) {
-    var time_start = Date.now(), result, time_end, data_file, run;
+    var time_start, result, time_end, data_file, run;
     data_file = process.argv[1].replace(/\.js$/gi, '.txt');
     run = function (data) {
+        time_start = Date.now();
         result = fn.apply(exports, data);
         time_end = Date.now();
         print(result + '\nIt took ' + (time_end - time_start) + ' ms\n');

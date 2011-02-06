@@ -1,0 +1,1 @@
+require('./common/euler').run(function () {return this.range(0, 2000000).filter(this.is_prime).sum();});

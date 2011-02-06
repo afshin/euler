@@ -1,13 +1,7 @@
-var euler = require('./common/euler');
-var main = function(){
-    var a, b, c, result = [];
-    for (c = 1000; c > 2; c -= 1){
-        for (b = c - 1; b > 1; b -= 1){
-            for (a = b - 1; a > 0; a -= 1){
-                if (((a * a) + (b * b) == (c * c)) && ((a + b + c) == 1000)) result.push([a, b, c].join(', '));
-            };
-        };
-    };
-    return result.join('\n');
-};
-euler.run(main);
+require('./common/euler').run(function () {
+    for (var i = 1000; i > 2; i -= 1)
+        for (var j = i - 1; j > 1; j -= 1)
+            for (var k = j - 1; k > 0; k -= 1)
+                if (((k * k) + (j * j) === (i * i)) && ((k + j + i) === 1000)) return k * j * i;
+    return 'failed!';
+});
