@@ -1,4 +1,4 @@
-require('./common/euler').run(function(){
+require('./common/euler').run(function () {
     var euler = this, is_prime = euler.is_prime;
     var is_truncatable_prime = (function () {
         var memo = {}, bad_nums = {0: null, 4: null, 6: null, 8: null};
