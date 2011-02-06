@@ -25,18 +25,25 @@ exports.debug = function (x) {
 };
 
 exports.divisors = function (num) {
-    var divisors = [1, num], limit = Math.sqrt(num) + 1, lcv;
-    for (lcv = 2; lcv < limit; lcv += 1) if (0 === num % lcv) divisors.push(lcv, num / lcv);
+    var divisors = [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, temp;
+    for (lcv = 2; lcv < limit; lcv += 1){
+        if (0 !== num % lcv) continue;
+        temp = num / lcv;
+        if (temp === lcv) divisors.push(lcv); else divisors.push(lcv, temp);
+    };
     return divisors;
 };
 
 exports.proper_divisors = function (num) {
     // *exactly* like exports.divisors except it does not include the number itself
-    var divisors = [1], limit = Math.sqrt(num) + 1, lcv;
-    for (lcv = 2; lcv < limit; lcv += 1) if (0 === num % lcv) divisors.push(lcv, num / lcv);
+    var divisors = [1], limit = Math.floor(Math.sqrt(num)) + 1, lcv, temp;
+    for (lcv = 2; lcv < limit; lcv += 1){
+        if (0 !== num % lcv) continue;
+        temp = num / lcv;
+        if (temp === lcv) divisors.push(lcv); else divisors.push(lcv, temp);
+    };
     return divisors;
 };
-
 exports.is_prime = (function () {
     var memo = {0: false, 1: false, 2: true};
     return function (num) {
