@@ -26,6 +26,6 @@ So for example:
 	require('./common/euler').run(function () {return [1, 2, 3, 4, 5, 6, 7].filter(this.is_prime);});
 	// output:
 	// 2,3,5,7
-	// It took 0ms
+	// It took 0 ms
 
 The functions are not yet documented ;-)

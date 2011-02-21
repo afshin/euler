@@ -25,22 +25,22 @@ exports.debug = function (x) {
 };
 
 exports.divisors = function (num) {
-    var divisors = [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, temp;
+    var divisors = [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
     for (lcv = 2; lcv < limit; lcv += 1){
         if (0 !== num % lcv) continue;
-        temp = num / lcv;
-        if (temp === lcv) divisors.push(lcv); else divisors.push(lcv, temp);
+        current_divisor = num / lcv;
+        if (current_divisor === lcv) divisors.push(lcv); else divisors.push(lcv, current_divisor);
     };
     return divisors;
 };
 
 exports.proper_divisors = function (num) {
     // *exactly* like exports.divisors except it does not include the number itself
-    var divisors = [1], limit = Math.floor(Math.sqrt(num)) + 1, lcv, temp;
+    var divisors = [1], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
     for (lcv = 2; lcv < limit; lcv += 1){
         if (0 !== num % lcv) continue;
-        temp = num / lcv;
-        if (temp === lcv) divisors.push(lcv); else divisors.push(lcv, temp);
+        current_divisor = num / lcv;
+        if (current_divisor === lcv) divisors.push(lcv); else divisors.push(lcv, current_divisor);
     };
     return divisors;
 };
@@ -64,8 +64,7 @@ exports.permutations = (function () {
         result = [];
         for (lcv = 0; lcv < (depth || len); lcv += 1){
             first = arr[lcv];
-            rest = arr.slice(0, lcv).concat(arr.slice(lcv + 1, len));
-            rest = rest.sort(function (a, b) {return a - b;});
+            rest = arr.slice(0, lcv).concat(arr.slice(lcv + 1, len)).sort(function (a, b) {return a - b;});
             permutations(rest).map(function (permutation) {result.push([first, permutation].join(''));});
         };
         return result;
