@@ -5,7 +5,7 @@
         for (var j = 2; j < 101; j += 1){
             name = Math.pow(i, j);
             if (name in terms) continue;
-            terms[Math.pow(i, j)] = null;
+            terms[name] = null;
             count += 1;
         };
     };
