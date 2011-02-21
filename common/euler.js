@@ -58,13 +58,16 @@ exports.is_prime = (function () {
 exports.permutations = (function () {
     /* use with a sorted array if you want numbers in order */
     var permutations = function (arr, depth) {
-        var lcv, len = arr.length, depth = depth || len;
+        var len = arr.length, first, rest, result, lcv;
         if (len === 0) return [];
-        if (len === 1) return [arr[0]];
-        for (lcv = 0, result = []; lcv < depth; lcv += 1)
-            permutations(arr.slice(0, lcv).concat(arr.slice(lcv + 1, len))).map(function (p) {
-                result.push(+[arr[lcv], p].join(''));
-            });
+        if (len === 1) return [arr.join('')];
+        result = [];
+        for (lcv = 0; lcv < (depth || len); lcv += 1){
+            first = arr[lcv];
+            rest = arr.slice(0, lcv).concat(arr.slice(lcv + 1, len));
+            rest = rest.sort(function (a, b) {return a - b;});
+            permutations(rest).map(function (permutation) {result.push([first, permutation].join(''));});
+        };
         return result;
     };
     return permutations;
@@ -78,14 +81,23 @@ exports.range = function (start, end) {
 };
 
 exports.run = function (fn) {
-    var time_start, result, time_end, data_file, run;
-    data_file = process.argv[1].replace(/\.js$/gi, '.txt');
-    run = function (data) {
-        time_start = Date.now();
-        result = fn.apply(exports, data);
-        time_end = Date.now();
-        print(result + '\nIt took ' + (time_end - time_start) + ' ms\n');
-    };
+    var time_start, result, time_end,
+        data_file = process.argv[1].replace(/\.js$/gi, '.txt'),
+        use_stdin = process.argv[2] && process.argv[2] === '-in',
+        stdin = function () {
+            var data = [];
+            process.stdin.resume();
+            process.stdin.setEncoding('utf-8');
+            process.stdin.on('data', function (chunk) {data.push(chunk);});
+            process.stdin.on('end', function () {run(data);});
+        },
+        run = function (data) {
+            time_start = Date.now();
+            result = fn.apply(exports, data);
+            time_end = Date.now();
+            print(result + '\nIt took ' + (time_end - time_start) + ' ms\n');
+        };
+    if (use_stdin) return stdin();
     path.exists(data_file, function (exists) {
         if (!exists) return run(null);
         fs.readFile(data_file, 'utf-8', function (err, data) {run([data]);});
