@@ -82,7 +82,7 @@ exports.range = function (start, end) {
 
 exports.run = function (fn) {
     var time_start, result, time_end,
-        data_file = process.argv[1].replace(/\.js$/gi, '.txt'),
+        data_file = process.argv[1] && process.argv[1].replace(/\.js$/gi, '.txt'),
         use_stdin = process.argv[2] && process.argv[2] === '-in',
         stdin = function () {
             var data = [];
@@ -98,6 +98,7 @@ exports.run = function (fn) {
             print(result + '\nIt took ' + (time_end - time_start) + ' ms\n');
         };
     if (use_stdin) return stdin();
+    if (!data_file) return run(null);
     path.exists(data_file, function (exists) {
         if (!exists) return run(null);
         fs.readFile(data_file, 'utf-8', function (err, data) {run([data]);});
