@@ -1,10 +1,12 @@
-euler (mostly using node.js)
-============================
+euler.js (mostly using node.js)
+===============================
 
 These are my answers to [Project Euler](http://projecteuler.net/) problems as I do them. They're probably not the 
 best or most elegant solutions. Nonetheless, please don't cheat if you've been assigned these problems as homework.
 
-Most of my answers are in JavaScript using [node.js](http://nodejs.org/). To use the euler framework, import it:
+Most of my answers are in JavaScript using [node.js](http://nodejs.org/). Some of the problems are solved in other
+languages. Some problems have answers in multiple languages because that's just how I ended up working on them. But 
+most are JavaScript and use the euler.js framework. To use euler.js, import it:
 
 	require('./common/euler').run(function (input) {/* your code here */});
 
@@ -18,8 +20,8 @@ piped into 020.js like so:
 
 	python 020.py | node 020.js -in
 
-There are a bunch of utility functions in euler. The euler object is passed into your code function as the scoped
-"this" object. So for example:
+There are a bunch of utility functions in euler.js that are passed into your code function as the scoped "this" object.
+So for example:
 
 	require('./common/euler').run(function () {return [1, 2, 3, 4, 5, 6, 7].filter(this.is_prime);});
 	// output:
