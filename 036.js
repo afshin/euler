@@ -1,7 +1,7 @@
 require('./common/euler').run(function () {
     var max = 1000000;
     var is_palindrome = function (str) {
-        var a = 0; b = str.length - 1;
+        var a = 0, b = str.length - 1;
         while (a < b) if (str[a++] !== str[b--]) return false;
         return true;
     };
