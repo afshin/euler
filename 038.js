@@ -1,3 +1,4 @@
+// INCOMPLETE! JUST CHECKED IN WITH INITIAL COMMIT
 require('./common/euler').run(function () {
     // find largest 9 digit pandigital whose written values equal {1, 2, ... n} * x
     // where n >= 2 and x is an integer
