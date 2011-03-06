@@ -1,5 +1,5 @@
 require('./common/euler').run(function () {
-    var euler = this, nums = euler.permutations([9, 8, 7, 6, 5, 4, 3, 2, 1], 1).sort(), lcv, len = nums.length;
+    var euler = this, nums = euler.permutations([9, 8, 7, 6, 5, 4, 3, 2, 1], 1), lcv, len = nums.length;
     var is_match = (function () {
         var min = [null, null, 9000, null, 90], max = [null, null, 9999, null, 99], memo = [];
         return function (num) {
@@ -15,5 +15,5 @@ require('./common/euler').run(function () {
             return false;
         };
     })();
-    for (lcv = len - 1; lcv > 0; lcv -= 1) if (is_match(nums[lcv])) return nums[lcv];
+    for (lcv = 0; lcv < len; lcv += 1) if (is_match(nums[lcv])) return nums[lcv];
 });

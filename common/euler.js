@@ -60,7 +60,7 @@ exports.permutations = (function () {
         result = [];
         for (lcv = 0; lcv < (depth || len); lcv += 1){
             first = arr[lcv];
-            rest = arr.slice(0, lcv).concat(arr.slice(lcv + 1, len)).sort(function (a, b) {return a - b;});
+            rest = arr.slice(0, lcv).concat(arr.slice(lcv + 1, len));
             permutations(rest).map(function (permutation) {result.push([first, permutation].join(''));});
         };
         return result;
