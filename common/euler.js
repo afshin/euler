@@ -20,10 +20,6 @@ Array.prototype.sum = function () {
     return this.reduce(function (acc, i) {return acc + (i || 0);}, 0);
 };
 
-exports.debug = function (x) {
-    print('[debug] ' + x + '\n');
-};
-
 exports.divisors = function (num) {
     var divisors = [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
     for (lcv = 2; lcv < limit; lcv += 1){
