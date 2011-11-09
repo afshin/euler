@@ -1,4 +1,4 @@
-var print = require('sys').print, fs = require('fs'), path = require('path');
+var print = require('util').print, fs = require('fs'), path = require('path');
 
 // array tail-recursive binary search with customizable comparator
 Array.prototype.search = function (value, fn, low, high, mid) {
