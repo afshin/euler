@@ -4,6 +4,6 @@ require('./common/euler').run(function () {
     for (j = bound; (!(j in memo) && pentagonal(j)), j > 0; j -= 1)
         for (k = 1; (!(k in memo) && pentagonal(k)), k < bound; k += 1)
             if (((memo[j] - memo[k]) in pentagonals) && ((memo[j] + memo[k]) in pentagonals))
-                return Math.abs(memo[k] - memo[j]);
+                return memo[j] - memo[k];
     return 'increase value of bound';
 });
