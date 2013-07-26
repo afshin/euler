@@ -4,9 +4,9 @@ euler.js (mostly using node.js)
 These are my answers to [Project Euler](http://projecteuler.net/) problems as I do them. They're probably not the 
 best or most elegant solutions. Nonetheless, please don't cheat if you've been assigned these problems as homework.
 
-Most of my answers are in JavaScript using [node.js](http://nodejs.org/). Some of the problems are solved in other
-languages. Some problems have answers in multiple languages because that's just how I ended up working on them. But 
-most are JavaScript and use the euler.js framework. To use euler.js, import it:
+A lot of my answers are in JavaScript using [node.js](http://nodejs.org/). Some of the problems are solved in other
+languages. Some problems have answers in multiple languages because that's just how I ended up working on them. The JS
+solutions and use the euler.js framework I wrote. To use euler.js, import it:
 
 	require('./common/euler').run(function (input) {/* your code here */});
 
@@ -29,3 +29,5 @@ So for example:
 	// It took 0 ms
 
 The functions are not yet documented ;-)
+
+Solution 26 runs in [Rhino](https://developer.mozilla.org/en/docs/Rhino), not node.js.
