@@ -1,33 +1,14 @@
 #include <stdio.h>
-
-int is_triangle(unsigned long candidate)
-{
-    int i = 284;
-    unsigned long base = 40470;
-    while (base < candidate) base += ++i;
-    return base == candidate;
-}
-
-int is_pentagon(unsigned long candidate)
-{
-    int i = 164;
-    unsigned long base = 40262;
-    while (base < candidate) base += (3 * ++i) - 2;
-    return base == candidate;
-}
-
 int main(int argc, char *argv[])
 {
-    int i = 143, match = 0;
-    unsigned long hexagon;
-    while (match < 2) {
-        i++;
-        match = 0;
-        hexagon = (unsigned long)((2 * i * i) - i);
-        match += is_triangle(hexagon);
-        if (!match) continue;
-        match += is_pentagon(hexagon);
+    long idx_triangle = 285, idx_pentagon = 165, idx_hexagon = 143;
+    unsigned long triangle = 40755, pentagon = 40755, hexagon = 40755;
+    while (1) {
+        triangle += ++idx_triangle;
+        if (pentagon < triangle) pentagon += 3 * idx_pentagon++ + 1;
+        if (hexagon < triangle) hexagon += 4 * idx_hexagon++ + 1;
+        if (triangle == pentagon && triangle == hexagon) break;
     }
-    printf("hexagon(%d): %lu\n", i, hexagon);
+    printf("%lu\n", hexagon);
     return 0;
 }
