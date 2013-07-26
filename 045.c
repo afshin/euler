@@ -13,6 +13,6 @@ int main(int argc, char *argv[])
     }
     end = clock();
     printf("Answer is: %lu\n", hexagon);
-    printf("It took %.2f ms\n",(end - start) * 1000 / CLOCKS_PER_SEC);
+    printf("It took %.2f ms\n",(double)(end - start) * 1000 / CLOCKS_PER_SEC);
     return 0;
 }
