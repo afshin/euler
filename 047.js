@@ -13,5 +13,5 @@ require('./common/euler').run(function () {
             continue;
         }
     }
-    return last - 3;
+    return last - magic + 1;
 });
