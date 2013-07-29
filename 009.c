@@ -1,20 +1,17 @@
-#include <time.h>
 #include <stdio.h>
-
-clock_t start, finish;
-
-int main(){
+#include "common/euler.h"
+void solution()
+{
     int a, b, c;
-    start = clock();
-    for (c = 1000; c > 2; c -= 1){
-        for (b = c - 1; b > 1; b -= 1){
-            for (a = b - 1; a > 0; a -= 1){
-                if (((a * a) + (b * b) == (c * c)) && ((a + b + c) == 1000)){
+    for (c = 1000; c > 2; c--)
+        for (b = c - 1; b > 1; b--)
+            for (a = b - 1; a > 0; a--)
+                if (((a * a) + (b * b) == (c * c)) && ((a + b + c) == 1000))
                     printf("%d, %d, %d\n", a, b, c);
-                }
-            }
-        }
-    }
-    finish = clock();
-    printf("It took %.2f ms\n",((double) (finish - start)) * 1000 / CLOCKS_PER_SEC);
+}
+
+int main(int argc, char *argv[])
+{
+    euler_run(argv[0], solution);
+    return 0;
 }
