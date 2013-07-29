@@ -1,4 +1,4 @@
-var print = require('util').print, fs = require('fs'), path = require('path');
+var print = require('util').print, fs = require('fs');
 
 // array tail-recursive binary search with customizable comparator
 Array.prototype.search = function (value, fn, low, high, mid) {
@@ -20,8 +20,8 @@ Array.prototype.sum = function () {
     return this.reduce(function (acc, i) {return acc + (i || 0);}, 0);
 };
 
-exports.divisors = function (num) {
-    var divisors = [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
+exports.divisors = function (num, exclude_identity) {
+    var divisors = exclude_identity ? [] : [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
     for (lcv = 2; lcv < limit; lcv += 1){
         if (0 !== num % lcv) continue;
         current_divisor = num / lcv;
@@ -94,7 +94,7 @@ exports.run = function (fn) {
         };
     if (use_stdin) return stdin();
     if (!data_file) return run(null);
-    path.exists(data_file, function (exists) {
+    fs.exists(data_file, function (exists) {
         if (!exists) return run(null);
         fs.readFile(data_file, 'utf-8', function (err, data) {run([data]);});
     });
