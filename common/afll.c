@@ -20,9 +20,10 @@ AfLL *AfLL_new(int len, AfLL_vector vector)
     for (lcv = 1; lcv < len; lcv++) AfLL_push(list, vector[lcv]);
     return list;
 }
-void AfLL_print(AfLL *list)
+void AfLL_print(const char *label, AfLL *list)
 {
     AfLL *current = list;
+    printf("%s", label);
     while (current) {
         printf("%lu ", current->value);
         current = current->next;
