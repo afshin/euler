@@ -22,7 +22,7 @@ Array.prototype.sum = function () {
 
 exports.divisors = function (num, exclude_identity) {
     var divisors = exclude_identity ? [] : [1, num], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
-    for (lcv = 2; lcv < limit; lcv += 1){
+    for (lcv = 2; lcv < limit; lcv += 1) {
         if (0 !== num % lcv) continue;
         current_divisor = num / lcv;
         if (current_divisor === lcv) divisors.push(lcv); else divisors.push(lcv, current_divisor);
@@ -33,7 +33,7 @@ exports.divisors = function (num, exclude_identity) {
 exports.proper_divisors = function (num) {
     // *exactly* like exports.divisors except it does not include the number itself
     var divisors = [1], limit = Math.floor(Math.sqrt(num)) + 1, lcv, current_divisor;
-    for (lcv = 2; lcv < limit; lcv += 1){
+    for (lcv = 2; lcv < limit; lcv += 1) {
         if (0 !== num % lcv) continue;
         current_divisor = num / lcv;
         if (current_divisor === lcv) divisors.push(lcv); else divisors.push(lcv, current_divisor);
@@ -58,7 +58,7 @@ exports.permutations = (function () {
         if (len === 0) return [];
         if (len === 1) return [arr.join('')];
         result = [];
-        for (lcv = 0; lcv < (depth || len); lcv += 1){
+        for (lcv = 0; lcv < (depth || len); lcv += 1) {
             first = arr[lcv];
             rest = arr.slice(0, lcv).concat(arr.slice(lcv + 1, len));
             permutations(rest).map(function (permutation) {result.push([first, permutation].join(''));});

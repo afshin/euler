@@ -1,10 +1,11 @@
 #include <time.h>
 #include <stdio.h>
 #include "euler.h"
-// never receives a number smaller than 3, so no need to deal with those cases
+// never receives a number smaller than 2, so no need to deal with those cases
 int euler_is_prime(unsigned long long num)
 {
     unsigned long long lcv;
+    if (num == 2) return 1;
     if (num % 2 == 0) return 0;
     for (lcv = 3; (num / lcv) + 2 > lcv; lcv += 2) if (num % lcv == 0) return 0;
     return 1;
