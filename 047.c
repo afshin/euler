@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "common/euler.h"
-int prime_divisors(unsigned long long num)
+int prime_divisors(unsigned long num)
 {
     int divisors = 0, limit = sqrt(num) + 1, lcv = 0, current_divisor = 0;
     for (lcv = 2; lcv < limit; lcv += 1) {
@@ -19,7 +19,7 @@ int prime_divisors(unsigned long long num)
 void solution()
 {
     int found = 0, magic = 4, distincts = 0;
-    unsigned long long current = 640, lcv = current, last = 0;
+    unsigned long current = 640, lcv = current, last = 0;
     while (found < magic) {
         distincts = prime_divisors(current = lcv++);
         if (distincts != magic) {
@@ -29,7 +29,7 @@ void solution()
             last = current;
         }
     }
-    printf("Answer is: %llu\n", last - magic + 1);
+    printf("Answer is: %lu\n", last - magic + 1);
 }
 int main(int argc, char *argv[])
 {
