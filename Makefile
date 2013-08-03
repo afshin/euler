@@ -6,12 +6,14 @@ all:
 	make 045
 	make 046
 	make 047
+	make 048
 009: common/euler.o
 010: common/euler.o
 012: common/euler.o
 045: common/euler.o
 046: common/afll.o common/euler.o
 047: common/euler.o
+048: common/euler.o
 clean:
 	rm -rf *.dSYM
 	rm -f common/*.o;
@@ -21,3 +23,4 @@ clean:
 	rm -f ./045
 	rm -f ./046
 	rm -f ./047
+	rm -f ./048
