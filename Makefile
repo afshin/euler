@@ -4,6 +4,8 @@ all:
 	make 009
 	make 010
 	make 012
+	make 014
+	make 031
 	make 045
 	make 046
 	make 047
@@ -17,7 +19,13 @@ all:
 	$(CC) 010.c $(CFLAGS) common/euler.o -o 010
 012:
 	make euler
-	 $(CC) 012.c $(CFLAGS) common/euler.o -o 012
+	$(CC) 012.c $(CFLAGS) common/euler.o -o 012
+014:
+	make euler
+	$(CC) 014.c $(CFLAGS) common/euler.o -o 014
+031:
+	make euler
+	$(CC) 031.c $(CFLAGS) common/euler.o -o 031
 045:
 	make euler
 	$(CC) 045.c $(CFLAGS) common/euler.o -o 045
@@ -37,6 +45,8 @@ clean:
 	rm -f ./009
 	rm -f ./010
 	rm -f ./012
+	rm -f ./014
+	rm -f ./031
 	rm -f ./045
 	rm -f ./046
 	rm -f ./047

@@ -1,6 +1,7 @@
 #include <stdio.h>
-
-main(){
+#include "common/euler.h"
+void solution()
+{
     int counter, a, b, c, d, e, f, g, h;
     counter = 0;
     for (a = 0; a <= 200; a += 1) 
@@ -13,4 +14,9 @@ main(){
                                 for (h = 0; h <= 1; h += 1) 
                                     if (a + 2*b + 5*c + 10*d + 20*e + 50*f + 100*g + 200*h == 200) counter += 1;
     printf("combinations for 200p is: %d\n", counter);
+}
+int main(int argc, char *argv[])
+{
+    euler_run(argv[0], solution);
+    return 0;
 }

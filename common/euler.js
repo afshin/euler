@@ -1,4 +1,4 @@
-var print = require('util').print, fs = require('fs');
+var fs = require('fs');
 
 // array tail-recursive binary search with customizable comparator
 Array.prototype.search = function (value, fn, low, high, mid) {
@@ -90,7 +90,7 @@ exports.run = function (fn) {
             time_start = Date.now();
             result = fn.apply(exports, data);
             time_end = Date.now();
-            print(result + '\nIt took ' + (time_end - time_start) + ' ms\n');
+            console.log(result + '\nIt took ' + (time_end - time_start) + ' ms');
         };
     if (use_stdin) return stdin();
     if (!data_file) return run(null);
