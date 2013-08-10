@@ -14,6 +14,5 @@ void solution()
 }
 int main(int argc, char *argv[])
 {
-    euler_run(argv[0], solution);
-    return 0;
+    return euler_run(argv[0], solution);
 }
