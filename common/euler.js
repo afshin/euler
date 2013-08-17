@@ -71,7 +71,7 @@ exports.permutations = (function () {
 exports.range = function (start, end, step) {
     var result = [], lcv;
     step = step || 1;
-    if (start > end) throw new RangeError('start cannot be larger than end');
+    if (start > end) throw new RangeError('start (' + start + ') cannot be larger than end (' + end + ')');
     for (lcv = start; lcv <= end; lcv += step) result.push(lcv);
     return result;
 };

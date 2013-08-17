@@ -1,5 +1,5 @@
 require('./common/euler').run(function () {
-    var euler = this;
+    var euler = this, start = 1000, end = 9999;
     Array.prototype.flatten = function () {return this.reduce(function (acc, val) {return acc.concat(val);}, []);};
     Array.prototype.unique = function () {
         return Object.keys(this.reduce(function (acc, val) {return (acc[val + ''] = null), acc;}, {}));
@@ -20,10 +20,10 @@ require('./common/euler').run(function () {
             }).filter(Boolean);
         }).flatten().filter(Boolean);
     };
-    return euler.range(1000, 9999)
+    return euler.range(start, end)
         .map(function (base) {return (base + '').split('').sort().join('');}).unique().map(function (key) {
             return euler.permutations(key.split('')).map(Number)
-                .filter(function (x) {return x > 1000;})
+                .filter(function (x) {return x > start;})
                 .unique().map(Number).sort().filter(euler.is_prime);
         }).filter(function (arr) {return arr.length > 2;})
         .map(regular_subsets).flatten().filter(function (subset) {return subset.length > 2;}).join('\n');
