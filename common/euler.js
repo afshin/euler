@@ -68,10 +68,11 @@ exports.permutations = (function () {
     return permutations;
 })();
 
-exports.range = function (start, end) {
+exports.range = function (start, end, step) {
     var result = [], lcv;
+    step = step || 1;
     if (start > end) throw new RangeError('start cannot be larger than end');
-    for (lcv = start; lcv < end + 1; lcv += 1) result.push(lcv);
+    for (lcv = start; lcv <= end; lcv += step) result.push(lcv);
     return result;
 };
 
