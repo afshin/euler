@@ -1,12 +1,16 @@
-euler.js (mostly using node.js)
-===============================
+Project Euler
+=============
+my solutions/libs (euler.js, euler.h)
+---------------------------------------
+
+![Project Euler progress for afshin](http://projecteuler.net/profile/afshin.png)
 
 These are my answers to [Project Euler](http://projecteuler.net/) problems as I do them. They're probably not the 
 best or most elegant solutions. Nonetheless, please don't cheat if you've been assigned these problems as homework.
 
 A lot of my answers are in JavaScript using [node.js](http://nodejs.org/). Some of the problems are solved in other
-languages. Some problems have answers in multiple languages because that's just how I ended up working on them. The JS
-solutions and use the euler.js framework I wrote. To use euler.js, import it:
+languages. A bunch are in C and are wrapped in the `euler_run` function from [euler.h](./common/euler.h). Some problems have answers in multiple languages because that's just how I ended up working on them. The JS
+solutions almost all use the [euler.js](./common/euler.js) framework I wrote. To use [euler.js](./common/euler.js), import it:
 
 	require('./common/euler').run(function (input) {/* your code here */});
 
